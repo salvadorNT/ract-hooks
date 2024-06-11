@@ -26,7 +26,7 @@ export const useFetch = (url) => {
 
     const getFetch = async () => {
 
-        if (localCache[url]){
+        if (localCache[url]) {
             setstate({
                 data: localCache[url],
                 isLoading: false,
@@ -38,7 +38,7 @@ export const useFetch = (url) => {
 
         setLoadingState();
         const response = await fetch(url);
-        await new Promise (resolve => setTimeout(resolve, 1500));
+        await new Promise(resolve => setTimeout(resolve, 1500));
 
         if (!response.ok) {
             setstate({
