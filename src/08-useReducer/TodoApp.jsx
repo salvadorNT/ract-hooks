@@ -12,23 +12,30 @@ export const TodoApp = () => {
 
     const [todos, dispatchTodos] = useReducer(todoReducer, initialState, init);
     useEffect(() => {
-      localStorage.setItem('todos', JSON.stringify(todos))
+        localStorage.setItem('todos', JSON.stringify(todos))
 
     }, [todos])
-    
+
 
     const handleNewTodo = (todo) => {
         const action = {
-        type: 'Add Todo',
-        payload: todo
+            type: 'Add Todo',
+            payload: todo
         }
         dispatchTodos(action);
     }
 
     const handleDeleteTodo = (id) => {
-        
+
         dispatchTodos({
             type: 'Remove Todo',
+            payload: id
+        });
+    }
+
+    const handleToggleTodo = (id) => {
+        dispatchTodos({
+            type: 'Toggle Todo',
             payload: id
         });
     }
@@ -40,13 +47,17 @@ export const TodoApp = () => {
 
             <div className="row">
                 <div className="col-7">
-                    <TodoList todos={todos} onDeleteTodo={handleDeleteTodo}/>
+                    <TodoList
+                        todos={todos}
+                        onDeleteTodo={handleDeleteTodo}
+                        onToggleTodo={handleToggleTodo}
+                    />
                 </div>
 
                 <div className="col-5">
                     <h4>Agregar TODO</h4>
                     <hr />
-                    <TodoAdd onNewTodo={handleNewTodo}/>
+                    <TodoAdd onNewTodo={handleNewTodo} />
                 </div>
             </div>
         </>
