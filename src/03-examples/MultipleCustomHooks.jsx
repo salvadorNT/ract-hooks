@@ -21,7 +21,7 @@ export const MultipleCustomHooks = () => {
                         data.sprites.front_default,
                         data.sprites.back_default,
                         data.sprites.front_shiny,
-                        data.sprites.front_shiny,
+                        data.sprites.back_shiny,
                     ]}
                 />}
             {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
@@ -29,14 +29,14 @@ export const MultipleCustomHooks = () => {
 
             <button
                 className="btn btn-primary mt-2"
-                onClick={counter > 1 ? decrement : null}
+                onClick={() => counter > 1 ? decrement() : null}
             >
                 Anterior
             </button>
             <button className="btn btn-warning mt-2">{counter}</button>
             <button
                 className="btn btn-primary mt-2"
-                onClick={increment}
+                onClick={() => increment()}
             >
                 Siguiente
             </button>

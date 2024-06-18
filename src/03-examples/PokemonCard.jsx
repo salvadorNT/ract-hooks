@@ -6,7 +6,7 @@ export const PokemonCard = ({ id, name, sprites }) => {
 
             <div>
                 {sprites.map(image => (
-                    <img src={image} alt={name} />
+                    <img key={ image } src={image} alt={name} />
                 ))}
             </div>
 
